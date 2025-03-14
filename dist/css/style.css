@@ -1,0 +1,494 @@
+:root {
+    --bs-red: #ff0000; /* 다음, 취소 버튼 컬러 */
+    --bs-blue: #009eff; /* 전송, 다음, 이전, 확인 컬러 */
+    --bs-soft-blue: #72a9e1; /* 전자서명 버튼쪽에 사용 */
+    --bs-sty-blue: #00b0f0; /* 포인트 컬러 */
+    --bs-light-blue: rgba(0, 158, 255, 0.1);
+    --bs-purple: #9473ed;
+    --bs-light-purple: #f7f5ff;
+    --bs-gray: #d9d9d9; /* 밝은 회색 */
+    --bs-light-gray: #888; /* 밝은 회색 */
+    --bs-medium-gray: #808080; /* 중간 회색 */
+    --bs-dark-gray: #616161; /* 중간 회색 */
+    --boder-color: #e1e1e1;
+}
+/* ================== *STYLEPAGE: 공통 ================== */
+.common .container {
+    padding: 0 15px 80px;
+    box-sizing: border-box;
+    background: transparent;
+    margin: 0;
+}
+
+.common_notice .blue_bar {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 15px 0;
+    box-sizing: border-box;
+    background: var(--bs-light-blue);
+    color: #333;
+    font-size: 16px;
+}
+
+.common_btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.common_btn button {
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px 0;
+    width: 48%;
+    border-radius: 10px;
+    color: #fff;
+    border: 0;
+}
+
+.common_btn button.blue_btn {
+    background: var(--bs-blue);
+}
+
+.common_btn button.red_btn {
+    background: var(--bs-red);
+}
+
+.common .subtop .inbox .navi::before {
+    background-repeat: no-repeat;
+}
+/* ================== *STYLEPAGE: 보험사 선택 페이지 ================== */
+body {
+    background: #fff;
+}
+
+.choose_company {
+}
+.choose_company .title {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.choose_company .top {
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--boder-color);
+    margin-bottom: 30px;
+}
+.choose_company .bottom {
+    margin-bottom: 40px;
+}
+
+.choose_company ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.choose_company li {
+    width: calc(25% - 10px);
+    text-align: center;
+}
+
+.choose_company input {
+    display: none;
+}
+
+.choose_company input + label {
+    width: 100%;
+    padding: 10px 0;
+    border: 1px solid var(--boder-color);
+    display: block;
+    color: var(--bs-gray);
+    border-radius: 10px;
+    font-size: 12px;
+    background: #fff;
+}
+
+.choose_company input:checked + label {
+    color: var(--bs-purple);
+    background: var(--bs-light-purple);
+    border-color: var(--bs-purple);
+}
+
+.choose_company {
+}
+
+/* ================== *STYLEPAGE: 전자 서명 페이지 ================== */
+.signature {
+}
+.signature .common_notice {
+    margin: 15px 0 20px;
+}
+.signature .top {
+}
+.signature .bottom {
+    padding-bottom: 20px;
+}
+
+.signature .top ul {
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--boder-color);
+    margin-bottom: 30px;
+}
+
+.signature .title {
+    font-size: 14px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.signature li {
+    margin-bottom: 20px;
+}
+.signature li p {
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+.signature li button {
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 10px;
+    border: 0;
+}
+.signature li button.signing {
+    background: var(--bs-soft-blue);
+}
+.signature li.li1 button.signing {
+    width: 100%;
+}
+.signature li .inner button {
+    width: 48%;
+}
+.signature li .inner button.check_signature {
+    color: #000;
+    background: var(--bs-medium-gray);
+    background: var(--bs-gray);
+}
+.signature li .checkbox_wrap {
+    padding: 8px;
+    border: 1px solid var(--boder-color);
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+.signature .inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.signature input[type='checkbox'] {
+    display: none;
+}
+.signature input[type='checkbox'] + label {
+    display: inline-block;
+    width: 100%;
+    font-size: 14px;
+    color: var(--bs-light-gray);
+    display: flex;
+    align-items: center;
+}
+.signature input[type='checkbox'] + label em {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px; /* 이미지와 텍스트 사이 간격 */
+    background: url('/dist/images/check_off.png') center center/80% no-repeat;
+    background-color: var(--boder-color);
+    border-radius: 50%;
+    vertical-align: middle;
+    font-size: 12px;
+}
+.signature input[type='checkbox']:checked + label {
+    color: #333;
+}
+.signature input[type='checkbox']:checked + label em {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    background: url('/dist/images/check_on.png') center center/80% no-repeat;
+    background-color: var(--boder-color); /* 체크시 배경색상 */
+    border-radius: 50%;
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.signature input[type='text'] {
+    width: 48%;
+    background: none;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+.signature input[type='text']::placeholder {
+}
+/* ================== *STYLEPAGE: 청구서 확인 페이지 ================== */
+.bill_verification {
+}
+.bill_verification .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.bill_verification .top .title {
+    font-size: 20px;
+    font-weight: 500;
+}
+.bill_verification .top .common_btn {
+    gap: 5px;
+}
+.bill_verification .top .common_btn button {
+    font-size: 12px;
+    padding: 0;
+    width: 70px;
+    height: 30px;
+}
+.bill_verification .blue_bar {
+    color: var(--bs-red);
+    font-size: 12px;
+    text-align: center;
+    font-weight: 700;
+    line-height: 140%;
+}
+.bill_verification .blue_bar span {
+    display: inline-block;
+    border-bottom: 2px dashed var(--bs-red);
+}
+.bill_verification button.send_btn {
+    width: 100%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: var(--bs-blue);
+    border: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+.bill_verification .image_wrap {
+    padding: 0 10px;
+}
+.bill_verification .image_box {
+    padding: 20px 15px;
+    border: 1px solid var(--boder-color);
+}
+.bill_verification .image_box img {
+    width: 100%;
+}
+
+/* ================== *STYLEPAGE: 보험금 청구 내역서 페이지 ================== */
+.claim_details .container {
+    padding-bottom: 0;
+}
+.claim_details .list_wrap {
+}
+.claim_details .list_top {
+}
+.claim_details .title {
+    margin: 15px 0 20px;
+    font-weight: 600;
+}
+.claim_details ul {
+    padding: 0 10px 30px;
+    border-bottom: 1px solid var(--boder-color);
+    margin-bottom: 30px;
+}
+
+.claim_details ul {
+}
+.claim_details .container li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.claim_details .detail li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.claim_details li:last-child {
+    margin-bottom: 0;
+}
+.claim_details li p {
+}
+.claim_details li span {
+    width: 50%;
+}
+.claim_details .detail {
+    padding: 0 8px;
+}
+.claim_details .detail .title {
+    padding-left: 7px;
+}
+.claim_details table {
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.claim_details table tr {
+}
+.claim_details table th {
+    padding: 10px 0;
+    border: 1px solid var(--bs-light-gray);
+    background: #c1e5f5;
+}
+.claim_details table td {
+    border: 1px solid var(--bs-light-gray);
+    width: 33.33%;
+    padding: 8px 0;
+    box-sizing: border-box;
+    box-sizing: border-box;
+}
+.claim_details table .status.success {
+    color: #000;
+}
+.claim_details table .status.failure {
+    color: var(--bs-red);
+    font-weight: 700;
+}
+.claim_details table button {
+    width: 80px;
+    height: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-weight: 700;
+    border: 0;
+}
+.claim_details table button.check_btn {
+    background: var(--bs-medium-gray);
+    color: #fff;
+}
+.claim_details table button.resend_btn {
+    background: var(--bs-blue);
+    color: #fff;
+}
+
+/* ================== *STYLEMODAL: 모달 스타일 ================== */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    display: none;
+}
+.modal .modal_layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+.modal .modal_wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.modal .modal_contents {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    line-height: 120%;
+}
+.modal .modal_btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.modal .modal_btn button {
+    width: 100px;
+    border-radius: 5px;
+    border: 0;
+    font-size: 16px;
+    font-weight: 700;
+    background: #009eff;
+    color: #fff;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.modal .modal_contents.modal_title {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.modal .canvas_wrap {
+    position: relative;
+    background: var(--boder-color);
+    padding: 10px;
+}
+.modal .canvas_wrap .canvas {
+    width: 100%;
+}
+.modal .canvas_wrap span {
+    color: var(--bs-light-gray);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.modal .canvas_wrap button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: 0;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 600;
+    background: var(--bs-dark-gray);
+}
+.modal .modal_btn2 {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.modal .modal_btn2 button {
+    border: 0;
+    background: transparent;
+}
+.modal .modal_btn2 img {
+    width: 26px;
+}
+
+.modal_two_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.modal_two_btn button {
+    padding: 5px 10px 7px 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #fff;
+    border: 0;
+    width: 28%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.modal_two_btn .mtb_blue_btn {
+    background: #009eff;
+}
+.modal_two_btn .mtb_red_btn {
+    background: #ff0000;
+}

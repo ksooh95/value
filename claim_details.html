@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta
+            name="viewport"
+            content="user-scalable=no, initial-scale = 1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"
+        />
+        <link rel="stylesheet" href="./dist/css/app.css" />
+        <link rel="stylesheet" href="./dist/css/style.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css" />
+        <title>가치워크 | 보험금 청구 내역</title>
+        <script type="text/javascript" src="../dist/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+    </head>
+
+    <!-- *PAGE: 보험금 청구 내역 상세 페이지 -->
+    <body>
+        <!-- *MODAL: 보험금 청구 전송내역 재전송 클릭시 뜨는 모달  -->
+        <div class="modal">
+            <div class="modal_layer"></div>
+            <div class="modal_wrap">
+                <div class="modal_contents">청구서류를 재전송 합니다. 상태 변경까지<br />4~5분 정도 소요됩니다.</div>
+                <div class="modal_btn">
+                    <button type="button" class="blue_btn">확인</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="claim_details common">
+            <section class="subtop">
+                <div class="inbox">
+                    <div class="navi _historyBack" onclick="history.back()">보험금 청구 내역 상세</div>
+                </div>
+            </section>
+
+            <div class="container">
+                <div class="list_wrap">
+                    <div class="list_top">
+                        <div class="title"># 고객정보</div>
+                        <ul>
+                            <li>
+                                <p>보험금 청구일</p>
+                                <span>2025.03.31</span>
+                            </li>
+                            <li>
+                                <p>피보험자(보험가입자)</p>
+                                <span>현진섭</span>
+                            </li>
+                            <li>
+                                <p>연락처</p>
+                                <span>01055557777</span>
+                            </li>
+                            <li>
+                                <p>직장 / 직무</p>
+                                <span>주부 / 가사</span>
+                            </li>
+                            <li>
+                                <p>보상안내연락처</p>
+                                <span>01044445555</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list_mid">
+                        <div class="title"># 사고 및 내원기록</div>
+                        <ul>
+                            <li>
+                                <p>날짜</p>
+                                <span>2025.03.31</span>
+                            </li>
+                            <li>
+                                <p>사고 및 내원 내용</p>
+                                <span>감기로 병원</span>
+                            </li>
+                            <li>
+                                <p>진단명</p>
+                                <span>감기</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list_bottom">
+                        <div class="title"># 보험금 수령 계좌정보</div>
+                        <ul>
+                            <li>
+                                <p>은행명</p>
+                                <span>국민은행</span>
+                            </li>
+                            <li>
+                                <p>계좌번호</p>
+                                <span>456313355122</span>
+                            </li>
+                            <li>
+                                <p>예금주</p>
+                                <span>홍길동</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="detail">
+                <div class="title"># 보험금 청구 전송 내역</div>
+                <table>
+                    <tr>
+                        <th>보험사</th>
+                        <th>전송상태</th>
+                        <th>관리</th>
+                    </tr>
+                    <tr>
+                        <td>삼성화재</td>
+                        <td class="status success">전송 성공</td>
+                        <td>
+                            <button
+                                type="button"
+                                class="check_btn"
+                                onclick="window.location.href='/bill_verification.html'"
+                            >
+                                확인
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>동부화재</td>
+                        <td class="status success">전송 성공</td>
+                        <td>
+                            <button
+                                type="button"
+                                class="check_btn"
+                                onclick="window.location.href='/bill_verification.html'"
+                            >
+                                확인
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>라이나생명</td>
+                        <td class="status success">전송 성공</td>
+                        <td>
+                            <button
+                                type="button"
+                                class="check_btn"
+                                onclick="window.location.href='/bill_verification.html'"
+                            >
+                                확인
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>라이나생명</td>
+                        <td class="status failure">전송 실패</td>
+                        <td>
+                            <button type="button" class="resend_btn on_modal_btn">재전송</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <section class="bot_menu">
+                <div class="inbox">
+                    <div class="menu">
+                        <ul class="home on" data-contents-link="/" data-applink="home">
+                            <img src="../dist/botmenu_home.png" alt="home" />
+                            <li>홈</li>
+                        </ul>
+                        <ul class="giftShow">
+                            <img src="../dist/botmenu_challenge.png" alt="giftShow" />
+                            <li>챌린지</li>
+                        </ul>
+                        <ul class="healthMall">
+                            <img src="../dist/botmenu_community.png" alt="healthMall" />
+                            <li>커뮤니티</li>
+                        </ul>
+                        <ul class="Don">
+                            <img src="../dist/botmenu_insurance.png" alt="Don" />
+                            <li>부가서비스</li>
+                        </ul>
+                        <ul class="mypage" data-contents-link="/mypage" data-applink="mypage">
+                            <img src="../dist/botmenu_mypage.png" alt="mypage" />
+                            <li>마이페이지</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+    <script>
+        $(document).ready(function () {
+            // 재전송 버튼 클릭 시 모달 오픈
+            $('.on_modal_btn').on('click', function () {
+                $('.modal').show();
+            });
+
+            // 모달 닫기 (레이어나 확인 버튼 클릭 시)
+            $('.modal_layer, .modal .blue_btn').on('click', function () {
+                $('.modal').hide();
+            });
+        });
+    </script>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale = 1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"
+    />
+    <link rel="stylesheet" href="./dist/css/app.css" />
+    <link rel="stylesheet" href="./dist/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css"
+    />
+    <title>가치워크 | 보험사 선택</title>
+    <script type="text/javascript" src="./dist/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+  </head>
+  <style type="text/css">
+    body {
+      background-color: #fff;
+    }
+  </style>
+
+  <!-- *PAGE: 보험사 선택 페이지 -->
+  <body>
+    <!-- *MODAL: 보험사 선택 4개 이상 클릭 다음버튼 누르면 뜨는 모달 -->
+    <div class="modal">
+      <div class="modal_layer"></div>
+      <div class="modal_wrap">
+        <div class="modal_contents">보험사는 4개까지 선택이 가능합니다</div>
+        <div class="modal_btn">
+          <button type="button" class="blue_btn">확인</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="choose_company common container-wrap">
+      <section class="subtop">
+        <div class="inbox">
+          <div class="navi _historyBack" onclick="history.back()">
+            보험사 선택
+          </div>
+        </div>
+      </section>
+      <div class="container">
+        <div class="common_notice">
+          <div class="blue_bar">
+            * 중복선택가능 / 청구할 보험사를 선택해 주세요.
+          </div>
+        </div>
+        <div class="choose_check_wrap">
+          <div class="top">
+            <div class="title">손해보험</div>
+            <ul class="checkbox_list">
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="samsung-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="samsung-fire">삼성화재</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="meritz-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="meritz-fire">메리츠화재</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="db-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="db-fire">DB손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="hyundai-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="hyundai-fire">현대해상</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="kb-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="kb-fire">KB손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="nonghyup-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="nonghyup-fire">농협손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="hanwha-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="hanwha-fire">한화손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="lotte-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="lotte-fire">롯데손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="heungkuk-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="heungkuk-fire">흥국화재</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="hana-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="hana-fire">하나손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="mg-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="mg-fire">MG손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="aig-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="aig-fire">AIG손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="axa-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="axa-fire">악사손해보험</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="lina-fire"
+                  name="insurance_checkbox"
+                />
+                <label for="lina-fire">라이나손해보험</label>
+              </li>
+            </ul>
+          </div>
+          <div class="bottom">
+            <div class="title">생명보험</div>
+            <ul class="checkbox_list">
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="samsung-life"
+                  name="insurance_checkbox"
+                />
+                <label for="samsung-life">삼성생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="hanwha-life"
+                  name="insurance_checkbox"
+                />
+                <label for="hanwha-life">한화생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="kyobo-life"
+                  name="insurance_checkbox"
+                />
+                <label for="kyobo-life">교보생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="shinhan-life"
+                  name="insurance_checkbox"
+                />
+                <label for="shinhan-life">신한라이프</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="nonghyup-life"
+                  name="insurance_checkbox"
+                />
+                <label for="nonghyup-life">농협생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="dongyang-life"
+                  name="insurance_checkbox"
+                />
+                <label for="dongyang-life">동양생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="metlife"
+                  name="insurance_checkbox"
+                />
+                <label for="metlife">메트라이프</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="db-life"
+                  name="insurance_checkbox"
+                />
+                <label for="db-life">DB생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="miraeasset-life"
+                  name="insurance_checkbox"
+                />
+                <label for="miraeasset-life">미래에셋생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="abl-life"
+                  name="insurance_checkbox"
+                />
+                <label for="abl-life">ABL생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="aia-life"
+                  name="insurance_checkbox"
+                />
+                <label for="aia-life">AIA생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="lina-life"
+                  name="insurance_checkbox"
+                />
+                <label for="lina-life">라이나생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="kdb-life"
+                  name="insurance_checkbox"
+                />
+                <label for="kdb-life">KDB생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="heungkuk-life"
+                  name="insurance_checkbox"
+                />
+                <label for="heungkuk-life">흥국생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="hana-life"
+                  name="insurance_checkbox"
+                />
+                <label for="hana-life">하나생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="fubon-hyundai-life"
+                  name="insurance_checkbox"
+                />
+                <label for="fubon-hyundai-life">푸본현대생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="imlife"
+                  name="insurance_checkbox"
+                />
+                <label for="imlife">IM라이프</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="kb-life"
+                  name="insurance_checkbox"
+                />
+                <label for="kb-life">KB라이프</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="chubb-life"
+                  name="insurance_checkbox"
+                />
+                <label for="chubb-life">처브생명</label>
+              </li>
+              <li>
+                <input
+                  type="checkbox"
+                  class="checkbox"
+                  id="bnp-paribas"
+                  name="insurance_checkbox"
+                />
+                <label for="bnp-paribas">BNP파리바</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="common_btn">
+          <button type="button" class="blue_btn on_modal_btn">다음</button>
+          <button type="button" class="red_btn">취소</button>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+    <section class="bot_menu">
+      <div class="inbox">
+        <div class="menu">
+          <ul class="home on" data-contents-link="/" data-applink="home">
+            <img src="../dist/botmenu_home.png" alt="home" />
+            <li>홈</li>
+          </ul>
+          <ul class="giftShow">
+            <img src="../dist/botmenu_challenge.png" alt="giftShow" />
+            <li>챌린지</li>
+          </ul>
+          <ul class="healthMall">
+            <img src="../dist/botmenu_community.png" alt="healthMall" />
+            <li>커뮤니티</li>
+          </ul>
+          <ul class="Don">
+            <img src="../dist/botmenu_insurance.png" alt="Don" />
+            <li>부가서비스</li>
+          </ul>
+          <ul class="mypage" data-contents-link="/mypage" data-applink="mypage">
+            <img src="../dist/botmenu_mypage.png" alt="mypage" />
+            <li>마이페이지</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script>
+    $(document).ready(function () {
+      // 다음 눌렀을때 체크박스 개수 제한 4개 초과시 모달오픈
+      $('.on_modal_btn').on('click', function () {
+        const checkedCount = $(
+          'input[name="insurance_checkbox"]:checked'
+        ).length;
+        if (checkedCount > 4) {
+          $('.modal').show();
+        } else {
+          // 4개 이하일 때 페이지 이동
+          window.location.href = '/electronic_signature.html';
+        }
+      });
+
+      // 모달 닫기 (레이어나 확인 버튼 클릭 시)
+      $('.modal_layer, .modal .blue_btn').on('click', function () {
+        $('.modal').hide();
+      });
+    });
+  </script>
+</html>

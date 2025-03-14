@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="user-scalable=no, initial-scale = 1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"
+    />
+    <link rel="stylesheet" href="./dist/css/app.css" />
+    <link rel="stylesheet" href="./dist/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css"
+    />
+    <title>가치워크 | 전자 서명</title>
+    <script type="text/javascript" src="../dist/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.js"></script>
+  </head>
+  <!-- *PAGE: 전자 서명 페이지 -->
+  <body>
+    <!-- *MODAL: 서명하기 클릭시 뜨는 모달  -->
+    <div class="modal modal_signature">
+      <div class="modal_layer"></div>
+      <div class="modal_wrap">
+        <div class="modal_contents modal_title">전자서명</div>
+        <div class="canvas_wrap">
+          <canvas class="canvas"> </canvas>
+          <span>(서명)</span>
+          <button type="button" class="reset_btn">다시하기</button>
+        </div>
+        <div class="modal_btn2">
+          <button type="button" class="close_btn">
+            <img src="./dist/images/close_i.png" alt="닫기" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- *MODAL: 전자 서명 다음버튼 클릭 모달 -->
+    <div class="modal modal_next">
+      <div class="modal_layer"></div>
+      <div class="modal_wrap">
+        <div class="modal_contents">모든 정보를 입력해야 합니다.</div>
+        <div class="modal_btn">
+          <button
+            type="button"
+            class="blue_btn"
+            onclick="window.location.href='claim_details.html'"
+          >
+            확인
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="signature common">
+      <section class="subtop">
+        <div class="inbox">
+          <div class="navi _historyBack" onclick="history.back()">
+            전자 서명
+          </div>
+        </div>
+      </section>
+
+      <form id="" action="" method="POST">
+        <div class="container">
+          <div class="common_notice">
+            <div class="blue_bar">
+              * 중복선택가능 / 청구할 보험사를 선택해 주세요.
+            </div>
+          </div>
+
+          <div class="top">
+            <div class="title">전자서명</div>
+            <ul>
+              <li class="li1">
+                <p>피보험자 서명</p>
+                <input type="hidden" name="insured_signature" value="" />
+                <button type="button" class="signing on_modal_btn">
+                  서명하기
+                </button>
+              </li>
+              <li class="li1">
+                <p>보험금 수익자 서명</p>
+                <div class="checkbox_wrap">
+                  <input type="checkbox" id="check_signature1" />
+                  <label for="check_signature1" name="same_as_insured"
+                    ><em></em>피보험자 서명과 동일해요.</label
+                  >
+                </div>
+                <input type="hidden" name="beneficiary_signature" value="" />
+                <button
+                  type="button"
+                  class="signing on_modal_btn"
+                  data-target="beneficiary_signature"
+                >
+                  서명하기
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bottom">
+            <div class="title">법정대리인 전자서명</div>
+            <ul>
+              <li>
+                <div class="checkbox_wrap">
+                  <input
+                    type="checkbox"
+                    id="check_signature2"
+                    name="is_minor"
+                  />
+                  <label for="check_signature2"
+                    ><em></em>피보험자가 만 14세 미만인 경우
+                    체크해주세요.</label
+                  >
+                </div>
+              </li>
+              <li>
+                <p>법정대리인1 서명</p>
+                <div class="inner">
+                  <input
+                    type="text"
+                    name="guardian1_name"
+                    placeholder="대리인 이름을 입력해주세요."
+                  />
+                  <button type="button" class="signing on_modal_btn">
+                    서명하기
+                  </button>
+                </div>
+              </li>
+              <li>
+                <p>법정대리인2 서명</p>
+                <div class="inner">
+                  <input
+                    type="text"
+                    name="guardian2_name"
+                    placeholder="대리인 이름을 입력해주세요."
+                  />
+                  <button type="button" class="check_signature on_modal_btn">
+                    서명완료(확인하기)
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="common_btn">
+            <button type="submit" class="blue_btn next_btn">다음</button>
+            <button type="button" class="red_btn">취소</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+
+  <script>
+    $(document).ready(function () {
+      // 서명하기 버튼 클릭 시 (전자 서명 모달 열기)
+      $('.on_modal_btn').on('click', function () {
+        $('.modal_signature').show();
+      });
+
+      // 다음 버튼 클릭 시 (재전송 모달 열기)
+      $('.next_btn').on('click', function (e) {
+        e.preventDefault(); // 기본 제출 방지
+        $('.modal_next').show();
+      });
+
+      // 모달 닫기 (모든 모달 공통)
+      $('.modal_layer, .modal .close_btn, .modal_next .blue_btn').on(
+        'click',
+        function () {
+          $('.modal_signature, .modal_next').hide();
+        }
+      );
+
+      // 다시하기 버튼 (캔버스 리셋)
+      $('.reset_btn').on('click', function () {
+        let canvas = document.querySelector('.canvas');
+        let context = canvas.getContext('2d');
+        context.clearRect(0, 0, canvas.width, canvas.height);
+      });
+
+      // 캔버스에 그리기 기능 test용
+      const canvas = document.querySelector('.canvas');
+      const ctx = canvas.getContext('2d');
+      let drawing = false;
+
+      const startDrawing = (e) => {
+        drawing = true;
+        ctx.beginPath();
+        ctx.moveTo(e.offsetX, e.offsetY);
+      };
+
+      const draw = (e) => {
+        if (!drawing) return;
+        ctx.lineTo(e.offsetX, e.offsetY);
+        ctx.stroke();
+      };
+
+      const stopDrawing = () => {
+        drawing = false;
+        ctx.closePath();
+      };
+
+      canvas.addEventListener('mousedown', startDrawing);
+      canvas.addEventListener('mousemove', draw);
+      canvas.addEventListener('mouseup', stopDrawing);
+      canvas.addEventListener('mouseout', stopDrawing);
+    });
+  </script>
+</html>
